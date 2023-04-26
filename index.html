@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Page Title</title>
+        
+    </head>
+
+    <body>
+        <h1 id="name"></h1>
+        <p id="when"></p>
+        <p id="from"></p>
+
+        <script>
+            function rot13(str) {
+                const input = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-';
+                const output = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm ';
+                let encoded = '';
+
+                for (let i=0; i < str.length; i++) {
+                    const index = input.indexOf(str[i]);
+                    encoded += output[index];
+                }
+
+                return encoded;
+            }
+
+            var queryString = window.location.search;
+            var urlParams = new URLSearchParams(queryString);
+            
+            var n = urlParams.get('n')
+            alert(n.length)
+            var name = rot13(n);
+
+            var currentdate = new Date();
+            var date = currentdate.getDay() + "/" + currentdate.getMonth() + "/" + currentdate.getFullYear();
+            var time = currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+
+            var referrer = document.referrer
+            
+            document.getElementById('name').innerHTML = 'Hello, ' + name;
+            document.getElementById('when').innerHTML = 'I see you visited this page on ' + date + ' at ' + time + '.';
+            document.getElementById('from').innerHTML = 'You clicked a link in ' + referrer + '.';
+        </script>
+    </body>
+</html>
