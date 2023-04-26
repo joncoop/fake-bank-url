@@ -33,7 +33,7 @@
             var date = currentdate.getDay() + "/" + currentdate.getMonth() + "/" + currentdate.getFullYear();
             var time = currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
 
-            var referrer = document.referrer
+            var referrer = window.frames.top.document.referrer;
             
             document.getElementById('name').innerHTML = 'Hello, ' + name;
             document.getElementById('when').innerHTML = 'I see you visited this page on ' + date + ' at ' + time + '.';
